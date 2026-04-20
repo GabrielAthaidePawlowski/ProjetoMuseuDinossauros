@@ -8,8 +8,19 @@ builder.Services.AddSwaggerGen();
 
 // Sua conexão do Mongo
 builder.Services.AddSingleton<MongoDbService>();
-
+ 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 var app = builder.Build();
+
+app.UseCors();
 
 // Ativa o Swagger visual
 app.UseSwagger();

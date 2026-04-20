@@ -9,6 +9,9 @@ public class Era
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
 
-    public string Nome { get; set; } = string.Empty; // Ex: Cretáceo Inferior
+    public string Nome { get; set; } = string.Empty;
     public string Descricao { get; set; } = string.Empty;
+    
+    // Campo novo para imagem da Era
+    public string? ImagemUrl { get; set; } 
 }
