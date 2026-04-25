@@ -15,6 +15,8 @@ public class Dinossauro
     public string Regiao { get; set; } = string.Empty;
     public string EraId { get; set; } = string.Empty;
 
+    public string Descricao { get; set; }
+
     // Campo novo para a foto do Dinossauro
     public string? ImagemUrl { get; set; }
 }

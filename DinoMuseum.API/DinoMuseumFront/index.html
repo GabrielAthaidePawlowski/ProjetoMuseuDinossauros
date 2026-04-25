@@ -2,131 +2,278 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>DinoMuseum 🦖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DinoMuseum 🦖 🇧🇷</title>
     <style>
-        /* Um estilo rápido para parecer um museu */
-        body { font-family: sans-serif; background: #f4f4f4; margin: 0; }
-        header { background: #2c3e50; color: white; padding: 20px; text-align: center; }
-        .menu-eras { display: flex; justify-content: center; gap: 10px; margin: 20px; }
-        .busca { text-align: center; margin-bottom: 30px; }
-        input { padding: 10px; width: 300px; border-radius: 5px; border: 1px solid #ccc; }
-        
-        /* Grid dos Cards */
-        #lista-dinos { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-            gap: 20px; padding: 20px; 
+        /* Estilos Gerais */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #f4f4f4; 
+            margin: 0; 
+            color: #333;
         }
-        .card { background: white; border-radius: 10px; padding: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .card img { width: 100%; hieght: 200px; object-fit: cover; border-radius: 5px; }
+
+        /* Banner de Capa */
+        .banner {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+            background: #2c3e50;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        .banner-text h1 { font-size: 3.5rem; margin: 0; }
+
+        /* Menu de Navegação e Eras */
+        header { 
+            background: #2c3e50; 
+            color: white; 
+            padding: 15px; 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .menu-eras { 
+            display: flex; 
+            justify-content: center; 
+            gap: 12px; 
+            flex-wrap: wrap;
+        }
 
         .menu-eras button {
-    padding: 10px 20px;
-    border: none;
-    background: #34495e;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
+            padding: 10px 20px;
+            border: none;
+            background: #34495e;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
 
-.menu-eras button:hover {
-    background: #1abc9c;
-}
+        .menu-eras button:hover {
+            background: #1abc9c;
+            transform: translateY(-2px);
+        }
+
+        /* Barra de Busca */
+        .busca-container { text-align: center; margin: 30px 0; }
+        .busca-container input { 
+            padding: 12px 20px; 
+            width: 80%; 
+            max-width: 500px; 
+            border-radius: 30px; 
+            border: 2px solid #ddd; 
+            font-size: 16px;
+            outline: none;
+        }
+
+        /* Grid de Dinossauros */
+        #lista-dinos { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 25px; 
+            padding: 20px; 
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card { 
+            background: white; 
+            border-radius: 15px; 
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1); 
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .card-img-container { height: 200px; width: 100%; background: #eee; }
+        .card img { width: 100%; height: 100%; object-fit: cover; }
+        .card-content { padding: 15px; }
+        .card h3 { margin: 0 0 5px 0; color: #2c3e50; }
+        .card .regiao { color: #e74c3c; font-weight: bold; }
+        .info-plus { color: #1abc9c; font-size: 12px; font-weight: bold; display: block; margin-top: 10px; }
+
+        /* Estilo do Modal (Janela de Curiosidade) */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0; top: 0; width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: animatetop 0.4s;
+        }
+
+        @keyframes animatetop {
+            from {top: -300px; opacity: 0}
+            to {top: 0; opacity: 1}
+        }
+
+        .close {
+            position: absolute; right: 15px; top: 10px;
+            font-size: 30px; cursor: pointer; color: white;
+            text-shadow: 0 0 5px black; z-index: 10;
+        }
+
+        .modal-body { padding: 20px; }
+        .modal-body h2 { color: #2c3e50; margin-top: 0; }
+        .modal-body p { line-height: 1.6; color: #555; font-size: 1.1rem; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>DinoMuseum 🦖</h1>
-    <div class="menu-eras" id="menu-eras">
-        <button onclick="filtrarPorEra('todas')">Todas as Eras</button>
-    </div>
-</header>
-
-<div class="busca">
-    <input type="text" id="inputBusca" placeholder="Pesquisar dinossauro..." onkeyup="buscar()">
-</div>
-
-<div id="lista-dinos">
+    <div class="banner">
+        <img src="image/Jurrasic.png" alt="Capa DinoMuseum">
+        <div class="banner-text">
+            <h1>DinoMuseum 🦖 🇧🇷</h1>
+            <p>Conheça a pré-história do Brasil</p>
+        </div>
     </div>
 
-<script>
-    let todosOsDinos = [];
-    let todasAsEras = [];
+    <header>
+        <div class="menu-eras" id="menu-eras">
+            <button onclick="filtrarPorEra('todas')">Todas as Eras</button>
+        </div>
+    </header>
 
-    async function carregarDados() {
-        try {
-            // Busca os Dinos e as Eras ao mesmo tempo
-            const [resDinos, resEras] = await Promise.all([
-                fetch('http://localhost:5180/api/Dinossauro'),
-                fetch('http://localhost:5180/api/Era')
-            ]);
+    <div class="busca-container">
+        <input type="text" id="inputBusca" placeholder="Pesquisar por nome ou espécie..." onkeyup="buscar()">
+    </div>
 
-            todosOsDinos = await resDinos.json();
-            todasAsEras = await resEras.json();
+    <div id="lista-dinos"></div>
 
-            exibirEras(todasAsEras);
-            exibirDinos(todosOsDinos);
-        } catch (error) {
-            console.error("Erro ao carregar dados:", error);
-        }
-    }
-
-    // Cria os botões de Eras dinamicamente lá no topo
-    function exibirEras(eras) {
-        const menu = document.getElementById('menu-eras');
-        // Mantém o botão "Todas" e adiciona os outros
-        menu.innerHTML = `<button onclick="filtrarPorEra('todas')">Todas as Eras</button>` + 
-            eras.map(era => `
-                <button onclick="filtrarPorEra('${era.id}')">${era.nome}</button>
-            `).join('');
-    }
-
-    function exibirDinos(lista) {
-    const container = document.getElementById('lista-dinos');
-    container.innerHTML = lista.map(dino => {
-        
-        // Agora usamos o nome exato que apareceu no seu JSON
-        const urlFinal = dino.imagemUrl || 'https://via.placeholder.com/250x150?text=Sem+Foto';
-        
-        return `
-            <div class="card">
-                <div style="height: 180px; overflow: hidden; border-radius: 5px; background: #eee;">
-                    <img src="${urlFinal}" 
-                         alt="${dino.nome}" 
-                         style="width: 100%; height: 100%; object-fit: cover;"
-                         onerror="this.src='https://via.placeholder.com/250x150?text=Erro+na+Imagem'">
-                </div>
-                <h3 style="margin: 10px 0 5px 0;">${dino.nome}</h3>
-                <p style="color: #666; margin: 0;"><i>${dino.especie}</i></p>
-                <p style="font-size: 14px; margin: 10px 0 0 0;">📍 ${dino.regiao}</p>
+    <div id="meuModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <img id="modalImg" src="" style="width: 100%; height: 250px; object-fit: cover;">
+            <div class="modal-body">
+                <h2 id="modalNome"></h2>
+                <p id="modalDescricao"></p>
             </div>
-        `;
-    }).join('');
-}
+        </div>
+    </div>
 
-    // Lógica dos Submenus (Filtrar por Era)
-    function filtrarPorEra(eraId) {
-        if (eraId === 'todas') {
-            exibirDinos(todosOsDinos);
-        } else {
-            const filtrados = todosOsDinos.filter(d => d.eraId === eraId);
+    <script>
+        let todosOsDinos = [];
+        let todasAsEras = [];
+
+        async function carregarDados() {
+            try {
+                const [resDinos, resEras] = await Promise.all([
+                    fetch('http://localhost:5180/api/Dinossauro'),
+                    fetch('http://localhost:5180/api/Era')
+                ]);
+                todosOsDinos = await resDinos.json();
+                todasAsEras = await resEras.json();
+                exibirEras(todasAsEras);
+                exibirDinos(todosOsDinos);
+            } catch (error) {
+                console.error("Erro ao carregar dados da API:", error);
+            }
+        }
+
+        function exibirEras(eras) {
+            const menu = document.getElementById('menu-eras');
+            menu.innerHTML = `<button onclick="filtrarPorEra('todas')">Todas as Eras</button>` + 
+                eras.map(era => `<button onclick="filtrarPorEra('${era.id}')">${era.nome}</button>`).join('');
+        }
+
+        function exibirDinos(lista) {
+            const container = document.getElementById('lista-dinos');
+            container.innerHTML = lista.map(dino => {
+                const urlFinal = dino.imagemUrl || 'https://via.placeholder.com/300x200?text=Sem+Foto';
+                
+                // Pegamos a descrição e substituímos aspas se houver para não quebrar o HTML
+                const desc = (dino.descricao || "Este dinossauro viveu em terras brasileiras. Em breve traremos mais curiosidades sobre ele!").replace(/'/g, "&apos;");
+
+                return `
+                    <div class="card" onclick="abrirModal('${dino.nome}', '${desc}', '${urlFinal}')">
+                        <div class="card-img-container">
+                            <img src="${urlFinal}" alt="${dino.nome}" onerror="this.src='https://via.placeholder.com/300x200?text=Erro+na+Imagem'">
+                        </div>
+                        <div class="card-content">
+                            <h3>${dino.nome}</h3>
+                            <p><i>${dino.especie}</i></p>
+                            <p>🍽️ ${dino.dieta || 'Não informada'}</p>
+                            <p class="regiao">📍 ${dino.regiao}</p>
+                            <span class="info-plus">SAIBA MAIS +</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Funções do Modal
+        function abrirModal(nome, desc, img) {
+            document.getElementById('modalNome').innerText = nome;
+            document.getElementById('modalDescricao').innerText = desc;
+            document.getElementById('modalImg').src = img;
+            document.getElementById('meuModal').style.display = "block";
+        }
+
+        function fecharModal() {
+            document.getElementById('meuModal').style.display = "none";
+        }
+
+        // Fecha o modal se clicar fora da caixa branca
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('meuModal')) {
+                fecharModal();
+            }
+        }
+
+        function filtrarPorEra(eraId) {
+            if (eraId === 'todas') {
+                exibirDinos(todosOsDinos);
+            } else {
+                const filtrados = todosOsDinos.filter(d => d.eraId === eraId);
+                exibirDinos(filtrados);
+            }
+        }
+
+        function buscar() {
+            const termo = document.getElementById('inputBusca').value.toLowerCase();
+            const filtrados = todosOsDinos.filter(d => 
+                d.nome.toLowerCase().includes(termo) || 
+                d.especie.toLowerCase().includes(termo)
+            );
             exibirDinos(filtrados);
         }
-    }
 
-    function buscar() {
-        const termo = document.getElementById('inputBusca').value.toLowerCase();
-        const filtrados = todosOsDinos.filter(d => 
-            d.nome.toLowerCase().includes(termo) || 
-            d.especie.toLowerCase().includes(termo)
-        );
-        exibirDinos(filtrados);
-    }
-
-    carregarDados();
-</script>
-
+        carregarDados();
+    </script>
 </body>
 </html>
