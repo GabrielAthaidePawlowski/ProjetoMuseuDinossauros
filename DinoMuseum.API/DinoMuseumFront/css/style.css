@@ -1,0 +1,216 @@
+/* Reset e Base */
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: #E3DAC9; 
+    margin: 0; 
+    color: #333; 
+}
+
+/* Banner */
+.banner { 
+    width: 100%; 
+    height: 270px; 
+    background: #076a3a; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+.banner img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+/* Cabeçalho e Menu */
+header { 
+    background: #7e6d4f; 
+    color: white; 
+    padding: 10px; 
+    z-index: 1000; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    gap: 15px; 
+    flex-wrap: wrap; 
+}
+
+.menu-eras { display: flex; gap: 10px; }
+
+.menu-eras button { 
+    padding: 8px 15px; 
+    border: none; 
+    background: #be9e67; 
+    color: white; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    font-size: 0.85rem; 
+    transition: 0.3s; 
+}
+
+.menu-eras button:hover { background: #076a3a; }
+
+/* Botão de Novo Dino no Menu */
+.btn-novo-menu {
+    padding: 8px 15px;
+    border: none;
+    background: #be9e67;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+.btn-novo-menu:hover { background: #34495e; transform: scale(1.05); }
+
+/* Busca */
+.busca-container { text-align: center; margin: 20px 0; }
+.busca-container input { 
+    padding: 12px 20px; 
+    width: 80%; 
+    max-width: 500px; 
+    border-radius: 30px; 
+    border: 1px solid #ddd; 
+    outline: none; 
+}
+
+/* Grid de Dinossauros */
+#lista-dinos { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 20px; 
+    padding: 20px; 
+    max-width: 1300px; 
+    margin: 0 auto; 
+}
+
+.card { 
+    background: #FEFEFA; 
+    border-radius: 15px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    transition: 0.3s; 
+    cursor: pointer; 
+}
+.card:hover { transform: translateY(-5px); }
+.card img { width: 100%; height: 180px; object-fit: cover; }
+.card-content { padding: 15px; }
+.card h3 { margin: 0; font-size: 1.2rem; }
+
+/* Nota e Divisor */
+.nota-jurassico { 
+    width: calc(100% - 30px); 
+    max-width: 1300px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    background-color: #fff9e6; 
+    border-left: 5px solid #be9e67; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+    box-sizing: border-box; 
+}
+
+.divisor-br { border: none; border-top: 1px solid #e0e0e0; margin: 40px auto; width: 90%; }
+
+/* Containers de Info de Baixo */
+.info-container { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 15px; 
+    width: calc(100% - 30px); 
+    max-width: 1300px; 
+    margin: 0 auto 20px auto; 
+    align-items: stretch; 
+}
+
+.info-box { 
+    background: #FEFEFA; 
+    padding: 15px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+    flex: 1; 
+    min-width: 300px; 
+    height: 320px; 
+    display: flex; 
+    flex-direction: column; 
+    overflow: hidden; 
+    box-sizing: border-box; 
+}
+
+.info-box h2 { 
+    color: #076a3a; 
+    font-size: 1.1rem; 
+    margin: 0 0 10px 0; 
+    border-bottom: 2px solid #eee; 
+    padding-bottom: 5px; 
+    text-align: center; 
+}
+
+/* Tabelas e Imagem Árvore */
+.table-wrapper { flex-grow: 1; display: flex; align-items: center; justify-content: center; width: 100%; }
+table { width: 95%; border-collapse: collapse; font-size: 0.85rem; }
+table th, table td { border: 1px solid #eee; padding: 8px; text-align: center; }
+table th { background-color: #2c3e50; color: white; }
+
+.arvore-wrapper { flex-grow: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.arvore-img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; }
+
+/* Modais (Geral) */
+.modal { 
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.8); 
+    backdrop-filter: blur(5px); 
+}
+
+.modal-content { 
+    background-color: white; 
+    margin: 5% auto; 
+    border-radius: 15px; 
+    width: 90%; 
+    max-width: 500px; 
+    text-align: center; 
+    overflow: hidden; 
+    position: relative; 
+}
+
+.close { 
+    position: absolute; 
+    right: 15px; 
+    top: 10px; 
+    font-size: 30px; 
+    cursor: pointer; 
+    color: #333; 
+}
+
+/* Formulário de Cadastro dentro do Modal */
+.input-form {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+textarea.input-form { height: 80px; resize: none; }
+
+.btn-salvar {
+    width: 100%;
+    padding: 12px;
+    background: #076a3a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.btn-salvar:hover { background: #054f2b; }

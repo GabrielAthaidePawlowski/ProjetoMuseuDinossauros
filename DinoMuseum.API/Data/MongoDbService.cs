@@ -8,14 +8,16 @@ public class MongoDbService
     private readonly IMongoDatabase _database;
 
     public MongoDbService(IConfiguration configuration)
-    {
-        // Lê a string de conexão do appsettings.json
-        var connectionString = configuration.GetSection("MongoDbSettings:ConnectionString").Value;
-        var databaseName = configuration.GetSection("MongoDbSettings:DatabaseName").Value;
+{
+    // Ele tenta pegar a variável de ambiente primeiro!
+    var connectionString = Environment.GetEnvironmentVariable("MONGODB_URI") 
+                          ?? configuration.GetSection("MongoDbSettings:ConnectionString").Value;
 
-        var client = new MongoClient(connectionString);
-        _database = client.GetDatabase(databaseName);
-    }
+    var databaseName = configuration.GetSection("MongoDbSettings:DatabaseName").Value;
+
+    var mongoClient = new MongoClient(connectionString);
+    _database = mongoClient.GetDatabase(databaseName);
+}
 
     public IMongoDatabase GetDatabase => _database;
 }
