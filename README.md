@@ -44,7 +44,7 @@ Para rodar este projeto localmente, você precisará de:
 Bash
 
 ```
-git clone https://github.com/seu-usuario/dinomuseum-api.git
+git clone https://github.com/GabrielAthaidePawlowski/ProjetoMuseuDinossauros
 cd dinomuseum-api
 
 ```
