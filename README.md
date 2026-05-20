@@ -58,7 +58,7 @@ Por questões de segurança e seguindo as boas práticas de arquitetura, a strin
 PowerShell
 
 ```
-$env:MONGODB_URI="mongodb+srv://seu_usuario:sua_senha@cluster.mongodb.net/MuseuDinoDB"
+$env:MONGODB_URI="mongodb+srv://seu_usuario:sua_senha@clusterdino.sq87bth.mongodb.net/?appName=ClusterDino"
 
 ```
 
