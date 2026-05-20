@@ -44,7 +44,7 @@ header {
     transition: 0.3s; 
 }
 
-.menu-eras button:hover { background: #076a3a; }
+.menu-eras button:hover { background: #076a3a;transform: scale(1.05); }
 
 /* Botão de Novo Dino no Menu */
 .btn-novo-menu {
@@ -59,7 +59,7 @@ header {
     transition: 0.3s;
 }
 
-.btn-novo-menu:hover { background: #34495e; transform: scale(1.05); }
+.btn-novo-menu:hover { background: #076a3a; transform: scale(1.05); }
 
 /* Busca */
 .busca-container { text-align: center; margin: 20px 0; }
