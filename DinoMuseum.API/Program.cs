@@ -13,7 +13,7 @@ if (string.IsNullOrEmpty(connectionString))
     throw new Exception("Connection string not found.");
 }
 
-
+// [SOLID - D] Dependency Inversion: Adicionando o serviço no container de DI para ser injetado nos Controllers.
 builder.Services.AddSingleton<MongoDbService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

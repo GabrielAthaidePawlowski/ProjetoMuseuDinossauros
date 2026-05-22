@@ -7,10 +7,15 @@ namespace DinoMuseum.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+
+// [SOLID - L] Liskov Substitution: Herdamos de ControllerBase sem alterar o comportamento base da classe pai.
+// [SOLID - S] Single Responsibility: Esta classe cuida APENAS das requisições HTTP e respostas ao cliente.
 public class EraController : ControllerBase
 {
+    // [SOLID - I] Interface Segregation: Dependemos de uma interface enxuta e específica (IMongoCollection) em vez de uma genérica e gigante.
     private readonly IMongoCollection<Era> _eras;
 
+    // [SOLID - D] Dependency Inversion: Não usamos 'new MongoDbService()'. A dependência é injetada pelo .NET via construtor.
     public EraController(MongoDbService mongoDbService)
     {
         _eras = mongoDbService.GetDatabase.GetCollection<Era>("Eras");

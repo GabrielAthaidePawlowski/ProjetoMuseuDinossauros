@@ -1,8 +1,8 @@
 using MongoDB.Driver;
-using Microsoft.Extensions.Configuration;
 
 namespace DinoMuseum.API.Data;
 
+// [SOLID - S] Single Responsibility: A única função desta classe é configurar e gerenciar a conexão com o banco de dados MongoDB.
 public class MongoDbService
 {
     private readonly IMongoDatabase _database;
