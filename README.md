@@ -5,7 +5,7 @@ Projeto desenvolvido para a disciplina de **Arquitetura de Aplicações Web (202
 ## 📸 Demonstração do Projeto
 
 **Interface do Usuário (Front-end):**
-![Interface do Museu](./DinoMuseumFront/image/home.png)
+![Interface do Museu](./DinoMuseum.API/DinoMuseumFront/image/home.png)
 
 ## 📝 Visão Geral do Domínio
 
@@ -100,6 +100,4 @@ No Swagger, você encontrará:
     
 -   Esquemas de resposta e códigos de status HTTP (200, 201, 204, 404).
 
-<p align="center">
-  <img src="./DinoMuseumFront/image/trex.gif" alt="T-Rex rugindo" width="300">
-</p>
+<img src="./DinoMuseum.API/DinoMuseumFront/image/trex.gif" alt="T-Rex rugindo" width="300">
