@@ -2,7 +2,12 @@ using DinoMuseum.API.Data;
 using MongoDB.Driver;
 using System.Reflection;
 
-var builder = WebApplication.CreateBuilder(args);
+
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    Args = args,
+    WebRootPath = "DinoMuseumFront"
+});
 
 
 var connectionString = Environment.GetEnvironmentVariable("MONGODB_URI") 
@@ -38,6 +43,10 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+
+app.UseDefaultFiles(); 
+app.UseStaticFiles();  
 
 app.UseCors("AllowAll"); 
 app.UseSwagger();

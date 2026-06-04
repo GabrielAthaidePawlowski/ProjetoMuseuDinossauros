@@ -2,6 +2,11 @@
 
 Projeto desenvolvido para a disciplina de **Arquitetura de Aplicações Web (2026.1)**. O DinoMuseum é uma plataforma interativa de catálogo e documentação de dinossauros que habitaram o território brasileiro, integrando informações geológicas e árvores genealógicas.
 
+## 📸 Demonstração do Projeto
+
+**Interface do Usuário (Front-end):**
+![Interface do Museu](./DinoMuseumFront/image/home.png)
+
 ## 📝 Visão Geral do Domínio
 
 O sistema gerencia duas entidades principais relacionadas:
@@ -94,3 +99,7 @@ No Swagger, você encontrará:
 -   Exemplos de corpos de requisição (JSON).
     
 -   Esquemas de resposta e códigos de status HTTP (200, 201, 204, 404).
+
+<p align="center">
+  <img src="./DinoMuseumFront/image/trex.gif" alt="T-Rex rugindo" width="300">
+</p>
